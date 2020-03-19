@@ -29,18 +29,18 @@ var longestCommonPrefix = function(strs) {
   let prefix = Array.from(strs[0]);
   for (let i = 1; i < strs.length; i++) {
     let word = strs[i];
+    if (word.length == 0) {
+      return "";
+    }
     for (let j = 0; j < word.length; j++) {
       if (word.charAt(0) != prefix[0]) {
-        return "";
-      }
-      if (word.length == 0) {
         return "";
       }
       if (word.charAt(j) != prefix[j]) {
         prefix.length = j;
         break;
       }
-      if (j + 1 == word.length || prefix.length > word.length) {
+      if (j + 1 == word.length && prefix.length > word.length) {
         prefix.length = word.length;
         break;
       }
